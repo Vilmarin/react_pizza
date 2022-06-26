@@ -40,10 +40,10 @@ function App() {
                     </div>
                     <h2 class="content__title">Все пиццы</h2>
                     <div class="content__items">
-                        <PizzaComponent />
-                        <PizzaComponent />
-                        <PizzaComponent />
-                        <PizzaComponent />
+                        <PizzaComponent title={'Мексиканская'} price={600} />
+                        <PizzaComponent title={'Пеперони'} price={400} />
+                        <PizzaComponent title={'Деревенская'} price={390} />
+                        <PizzaComponent title={'Городская'} price={500} />
                     </div>
                 </div>
             </div>
