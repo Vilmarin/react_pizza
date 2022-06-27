@@ -1,8 +1,14 @@
+//Components
 import './App.css'
 import { Categories } from './components/Categories/Categories'
 import { Header } from './components/Header/Header'
 import { PizzaComponent } from './components/PizzaComponent/PizzaComponent'
 import './scss/app.scss'
+
+//Data
+import pizzas from './data/pizzas.json'
+
+console.log(pizzas)
 
 function App() {
     return (
@@ -40,10 +46,17 @@ function App() {
                     </div>
                     <h2 className="content__title">Все пиццы</h2>
                     <div className="content__items">
-                        <PizzaComponent title={'Мексиканская'} price={600} />
+                        {pizzas.map((item) => (
+                            <PizzaComponent
+                                title={item.title}
+                                price={item.price}
+                                img={item.imageUrl}
+                            />
+                        ))}
+                        {/* <PizzaComponent title={'Мексиканская'} price={600} />
                         <PizzaComponent title={'Пеперони'} price={400} />
                         <PizzaComponent title={'Деревенская'} price={390} />
-                        <PizzaComponent title={'Городская'} price={500} />
+                        <PizzaComponent title={'Городская'} price={500} /> */}
                     </div>
                 </div>
             </div>

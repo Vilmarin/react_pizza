@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const PizzaComponent = ({ price, title }) => {
+export const PizzaComponent = ({ price, title, img }) => {
     const [pizzaCount, setPizzaCount] = useState(0)
 
     const addPizza = () => {
@@ -9,11 +9,7 @@ export const PizzaComponent = ({ price, title }) => {
 
     return (
         <div className="pizza-block">
-            <img
-                className="pizza-block__image"
-                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                alt="Pizza"
-            />
+            <img className="pizza-block__image" src={img} alt="Pizza" />
             <h4 className="pizza-block__title">{title}</h4>
             <div className="pizza-block__selector">
                 <ul>
