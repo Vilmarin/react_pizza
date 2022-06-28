@@ -51,6 +51,7 @@ function App() {
                                 title={item.title}
                                 price={item.price}
                                 img={item.imageUrl}
+                                size={item.sizes}
                             />
                         ))}
                         {/* <PizzaComponent title={'Мексиканская'} price={600} />
