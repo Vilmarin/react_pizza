@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const PizzaComponent = ({ price, title, img , size}) => {
+export const PizzaComponent = ({ price, title, img, size }) => {
     const [pizzaCount, setPizzaCount] = useState(0)
     const [activeSize, setActiveSize] = useState(0)
 
@@ -11,7 +11,7 @@ export const PizzaComponent = ({ price, title, img , size}) => {
     const setActiveSizeClick = (index) => {
         setActiveSize(index)
     }
-    console.log(size);
+    console.log(size)
     return (
         <div className="pizza-block">
             <img className="pizza-block__image" src={img} alt="Pizza" />
@@ -22,9 +22,14 @@ export const PizzaComponent = ({ price, title, img , size}) => {
                     <li>традиционное</li>
                 </ul>
                 <ul>
-                    <li onClick={()=>setActiveSizeClick(0)} className={activeSize===0 ? 'active' : ''}>{size}</li>
-                    {/* <li onClick={()=>setActiveSizeClick(1)} className={activeSize===1 ? 'active' : ''}>30 см.</li>
-                    <li>40 см.</li> */}
+                    {size.map((item, index) => (
+                        <li
+                            onClick={() => setActiveSizeClick(index)}
+                            className={activeSize === index ? 'active' : ''}
+                        >
+                            {item} см
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div className="pizza-block__bottom">
