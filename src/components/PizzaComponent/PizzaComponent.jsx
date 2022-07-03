@@ -1,30 +1,31 @@
 import { useState } from 'react'
 
-export const PizzaComponent = ({ price, title, img, size }) => {
+export const PizzaComponent = ({ price, title, imageUrl, sizes, types }) => {
     const [pizzaCount, setPizzaCount] = useState(0)
     const [activeSize, setActiveSize] = useState(0)
+    const [activeType, setactiveType] = useState(0)
 
-    const addPizza = () => {
-        setPizzaCount(pizzaCount + 1)
-    }
+    const typeNames = ['тонкое', 'традиционное']
 
-    const setActiveSizeClick = (index) => {
-        setActiveSize(index)
-    }
-    console.log(size)
     return (
         <div className="pizza-block">
-            <img className="pizza-block__image" src={img} alt="Pizza" />
+            <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
             <h4 className="pizza-block__title">{title}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li>тонкое</li>
-                    <li>традиционное</li>
+                    {types.map((itemIndex) => (
+                        <li
+                            className={activeType === itemIndex ? 'active' : ''}
+                            onClick={() => setactiveType(itemIndex)}
+                        >
+                            {typeNames[itemIndex]}
+                        </li>
+                    ))}
                 </ul>
                 <ul>
-                    {size.map((item, index) => (
+                    {sizes.map((item, index) => (
                         <li
-                            onClick={() => setActiveSizeClick(index)}
+                            onClick={() => setActiveSize(index)}
                             className={activeSize === index ? 'active' : ''}
                         >
                             {item} см
@@ -35,7 +36,7 @@ export const PizzaComponent = ({ price, title, img, size }) => {
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
                 <button
-                    onClick={addPizza}
+                    onClick={() => setPizzaCount(pizzaCount + 1)}
                     className="button button--outline button--add"
                 >
                     <svg
