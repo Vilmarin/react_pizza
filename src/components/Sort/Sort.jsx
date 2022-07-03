@@ -2,6 +2,14 @@ import { useState } from 'react'
 
 export const Sort = () => {
     const [openSort, setOpenSort] = useState(false)
+    const [activeCategory, setActiveCategory] = useState('популярности')
+
+    const categoryList = ['популярности', 'цене', 'алфавиту']
+
+    const closePopup = (index) => {
+        setActiveCategory(index)
+        setOpenSort(false)
+    }
 
     return (
         <div className="sort">
@@ -19,14 +27,24 @@ export const Sort = () => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setOpenSort(!openSort)}>популярности</span>
+                <span onClick={() => setOpenSort(!openSort)}>
+                    {activeCategory}
+                </span>
             </div>
             {openSort && (
                 <div className="sort__popup">
                     <ul>
-                        <li className="active">популярности</li>
-                        <li>цене</li>
-                        <li>алфавиту</li>
+                        {categoryList.map((item, index) => (
+                            <li
+                                key={index}
+                                onClick={() => closePopup(item)}
+                                className={
+                                    activeCategory === item ? 'active' : ''
+                                }
+                            >
+                                {item}
+                            </li>
+                        ))}
                     </ul>
                 </div>
             )}
