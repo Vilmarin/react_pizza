@@ -15,6 +15,7 @@ export const PizzaComponent = ({ price, title, imageUrl, sizes, types }) => {
                 <ul>
                     {types.map((itemIndex) => (
                         <li
+                            key={itemIndex}
                             className={activeType === itemIndex ? 'active' : ''}
                             onClick={() => setactiveType(itemIndex)}
                         >
@@ -25,6 +26,7 @@ export const PizzaComponent = ({ price, title, imageUrl, sizes, types }) => {
                 <ul>
                     {sizes.map((item, index) => (
                         <li
+                            key={index}
                             onClick={() => setActiveSize(index)}
                             className={activeSize === index ? 'active' : ''}
                         >
